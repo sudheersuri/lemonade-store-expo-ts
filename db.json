@@ -1,0 +1,159 @@
+{
+  "beverages": [
+    {
+      "id": "1",
+      "name": "Classic Lemonade",
+      "description": "Our original recipe with the perfect balance of sweet and tart",
+      "image": "https://images.pexels.com/photos/2109099/pexels-photo-2109099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "sizes": [
+        {
+          "id": "s1",
+          "name": "Small",
+          "price": 3.99,
+          "oz": 12
+        },
+        {
+          "id": "m1",
+          "name": "Medium",
+          "price": 4.99,
+          "oz": 16
+        },
+        {
+          "id": "l1",
+          "name": "Large",
+          "price": 5.99,
+          "oz": 24
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Strawberry Lemonade",
+      "description": "Sweet strawberries blended with our classic lemonade",
+      "image": "https://images.pexels.com/photos/1233319/pexels-photo-1233319.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "sizes": [
+        {
+          "id": "s2",
+          "name": "Small",
+          "price": 4.49,
+          "oz": 12
+        },
+        {
+          "id": "m2",
+          "name": "Medium",
+          "price": 5.49,
+          "oz": 16
+        },
+        {
+          "id": "l2",
+          "name": "Large",
+          "price": 6.49,
+          "oz": 24
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Blueberry Lemonade",
+      "description": "Fresh blueberries mixed with our tangy lemonade",
+      "image": "https://images.pexels.com/photos/3217151/pexels-photo-3217151.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "new": true,
+      "sizes": [
+        {
+          "id": "s3",
+          "name": "Small",
+          "price": 4.49,
+          "oz": 12
+        },
+        {
+          "id": "m3",
+          "name": "Medium",
+          "price": 5.49,
+          "oz": 16
+        },
+        {
+          "id": "l3",
+          "name": "Large",
+          "price": 6.49,
+          "oz": 24
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Raspberry Lemonade",
+      "description": "Tart raspberries complement our signature lemonade",
+      "image": "https://images.pexels.com/photos/96974/pexels-photo-96974.jpeg",
+      "sizes": [
+        {
+          "id": "s4",
+          "name": "Small",
+          "price": 4.49,
+          "oz": 12
+        },
+        {
+          "id": "m4",
+          "name": "Medium",
+          "price": 5.49,
+          "oz": 16
+        },
+        {
+          "id": "l4",
+          "name": "Large",
+          "price": 6.49,
+          "oz": 24
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Mint Lemonade",
+      "description": "Cooling mint leaves infused with our refreshing lemonade",
+      "image": "https://images.pexels.com/photos/616840/pexels-photo-616840.jpeg",
+      "sizes": [
+        {
+          "id": "s5",
+          "name": "Small",
+          "price": 4.29,
+          "oz": 12
+        },
+        {
+          "id": "m5",
+          "name": "Medium",
+          "price": 5.29,
+          "oz": 16
+        },
+        {
+          "id": "l5",
+          "name": "Large",
+          "price": 6.29,
+          "oz": 24
+        }
+      ]
+    }
+  ],
+  "orders": [
+    {
+      "id": "ff34",
+      "orderNumber": "ORD2747",
+      "customer": {
+        "name": "Test",
+        "email": "test@gmail.com",
+        "phone": "1231231234"
+      },
+      "items": [
+        {
+          "beverageId": "2",
+          "sizeId": "m2",
+          "quantity": 2,
+          "name": "Strawberry Lemonade",
+          "sizeName": "Medium",
+          "price": 5.49
+        }
+      ],
+      "totalAmount": 10.98,
+      "status": "completed",
+      "createdAt": "2025-06-08T01:48:31.954Z"
+    }
+  ]
+}
