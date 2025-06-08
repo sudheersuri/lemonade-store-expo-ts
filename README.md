@@ -2,6 +2,8 @@
 
 ![Demo](https://github.com/sudheersuri/lemonade-store-expo-ts/blob/main/demo.gif)
 
+# SEQUENCE DIAGRAM FOR ORDER PLACEMENT
+
 ![ORDER PLACEMENT FLOW](https://github.com/sudheersuri/lemonade-store-expo-ts/blob/main/order-placement-flow.png)
 
 # Features
