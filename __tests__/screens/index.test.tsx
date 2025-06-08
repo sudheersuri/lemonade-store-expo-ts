@@ -6,7 +6,7 @@ describe('Menu', () => {
     const { getByTestId } = renderWithProviders(<MenuScreen />);
     
     await waitFor(() => {
-      expect(getByTestId("beverage-grid")).toBeTruthy();
+      expect(getByTestId("beverages")).toBeTruthy();
     }, { timeout: 3000 });
   });
 });

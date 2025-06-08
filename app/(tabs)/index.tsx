@@ -5,8 +5,8 @@ import {
   StyleSheet,
   ActivityIndicator,
   RefreshControl,
-  ScrollView,
   useWindowDimensions,
+  FlatList,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useGetBeveragesQuery } from '@/redux/services/beverageApi';
@@ -16,9 +16,13 @@ import { useAppSelector } from '@/redux/hooks';
 import { selectTheme } from '@/redux/slices/uiSlice';
 import Button from '@/components/Button';
 
-
 export default function MenuScreen() {
-  const { data: beverages, isLoading, isFetching, error, refetch } = useGetBeveragesQuery();
+  const {
+    data: beverages,
+    isFetching,
+    error,
+    refetch,
+  } = useGetBeveragesQuery();
   const [refreshing, setRefreshing] = useState(false);
   const theme = useAppSelector(selectTheme);
   const themeColors = theme === 'light' ? colors : darkColors;
@@ -31,10 +35,14 @@ export default function MenuScreen() {
     setRefreshing(false);
   };
 
-
-  if (isLoading && !refreshing) {
+  if (isFetching && !refreshing) {
     return (
-      <View style={[styles.loadingContainer, { backgroundColor: themeColors.white }]}>
+      <View
+        style={[
+          styles.loadingContainer,
+          { backgroundColor: themeColors.white },
+        ]}
+      >
         <ActivityIndicator size="large" color={themeColors.primary} />
         <Text style={[styles.loadingText, { color: themeColors.neutral }]}>
           Loading beverages...
@@ -45,7 +53,9 @@ export default function MenuScreen() {
 
   if (error) {
     return (
-      <View style={[styles.errorContainer, { backgroundColor: themeColors.white }]}>
+      <View
+        style={[styles.errorContainer, { backgroundColor: themeColors.white }]}
+      >
         <Text style={[styles.errorTitle, { color: themeColors.error }]}>
           Something went wrong
         </Text>
@@ -58,7 +68,7 @@ export default function MenuScreen() {
             color: colors.black,
           }}
           disabled={isFetching}
-          onPress={() =>refetch()}
+          onPress={onRefresh}
           style={styles.reloadButton}
         />
       </View>
@@ -66,28 +76,26 @@ export default function MenuScreen() {
   }
 
   return (
-    <SafeAreaView edges={['bottom']}  style={[styles.container, { backgroundColor: themeColors.white }]}>
-      <ScrollView
+    <SafeAreaView
+      edges={['bottom']}
+      style={[styles.container, { backgroundColor: themeColors.white }]}
+    >
+      <FlatList
+        data={beverages}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <View style={[styles.beverageItem, isTablet && { width: '48%' }]}>
+            <BeverageCard beverage={item} />
+          </View>
+        )}
+        numColumns={isTablet ? 2 : 1}
+        columnWrapperStyle={isTablet ? styles.row : null}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
-      >
-        <View style={styles.sectionContainer}>
-          <View style={styles.beverageGrid}  testID='beverage-grid'>
-            {beverages?.map((beverage) => (
-              <View 
-                key={beverage.id} 
-                style={[
-                  styles.beverageItem,
-                  isTablet && { width: '48%' }
-                ]}
-              >
-                <BeverageCard beverage={beverage} />
-              </View>
-            ))}
-          </View>
-        </View>
-      </ScrollView>
+        contentContainerStyle={styles.sectionContainer}
+        testID="beverages"
+      />
     </SafeAreaView>
   );
 }
@@ -104,7 +112,10 @@ const styles = StyleSheet.create({
   loadingText: {
     marginTop: spacing.md,
     fontFamily: 'Inter-Medium',
-    fontSize: typography.fontSize.md
+    fontSize: typography.fontSize.md,
+  },
+  row: {
+    justifyContent: 'space-between',
   },
   errorContainer: {
     flex: 1,
@@ -140,22 +151,12 @@ const styles = StyleSheet.create({
     marginVertical: spacing.md,
     paddingHorizontal: spacing.md,
   },
-  sectionTitle: {
-    fontFamily: 'Inter-SemiBold',
-    fontSize: typography.fontSize.lg,
-    marginBottom: spacing.md,
-  },
-  beverageGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-  },
   beverageItem: {
     width: '100%',
     marginBottom: spacing.md,
   },
-  reloadButton:{
-    minWidth: 180, 
-    marginVertical:16 
-  }
+  reloadButton: {
+    minWidth: 180,
+    marginVertical: 16,
+  },
 });
