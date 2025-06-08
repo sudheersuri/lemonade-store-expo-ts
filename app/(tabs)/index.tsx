@@ -14,10 +14,11 @@ import BeverageCard from '@/components/BeverageCard';
 import { colors, darkColors, spacing, typography } from '@/components/theme';
 import { useAppSelector } from '@/redux/hooks';
 import { selectTheme } from '@/redux/slices/uiSlice';
+import Button from '@/components/Button';
 
 
 export default function MenuScreen() {
-  const { data: beverages, isLoading, error, refetch } = useGetBeveragesQuery();
+  const { data: beverages, isLoading, isFetching, error, refetch } = useGetBeveragesQuery();
   const [refreshing, setRefreshing] = useState(false);
   const theme = useAppSelector(selectTheme);
   const themeColors = theme === 'light' ? colors : darkColors;
@@ -51,6 +52,15 @@ export default function MenuScreen() {
         <Text style={[styles.errorMessage, { color: themeColors.onNeutral }]}>
           We couldn't load the menu. Please try again.
         </Text>
+        <Button
+          title={'Reload'}
+          textStyle={{
+            color: colors.black,
+          }}
+          disabled={isFetching}
+          onPress={() =>refetch()}
+          style={styles.reloadButton}
+        />
       </View>
     );
   }
@@ -144,4 +154,8 @@ const styles = StyleSheet.create({
     width: '100%',
     marginBottom: spacing.md,
   },
+  reloadButton:{
+    minWidth: 180, 
+    marginVertical:16 
+  }
 });
