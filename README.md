@@ -2,6 +2,8 @@
 
 ![Demo](https://github.com/sudheersuri/lemonade-store-expo-ts/blob/main/demo.gif)
 
+![ORDER PLACEMENT FLOW](https://github.com/sudheersuri/lemonade-store-expo-ts/blob/main/order-placement-flow.png)
+
 # Features
 - Expo
 - Typescript
