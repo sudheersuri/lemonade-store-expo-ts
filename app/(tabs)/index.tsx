@@ -73,7 +73,7 @@ export default function MenuScreen() {
         }
       >
         <View style={styles.sectionContainer}>
-          <View style={styles.beverageGrid}>
+          <View style={styles.beverageGrid}  testID='beverage-grid'>
             {beverages?.map((beverage) => (
               <View 
                 key={beverage.id} 
