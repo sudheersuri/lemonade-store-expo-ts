@@ -94,7 +94,7 @@ export default function CartScreen() {
             Tax (13%)
           </Text>
           <Text style={[styles.summaryValue, { color: themeColors.onNeutral }]}>
-            {formatCurrency(cartTotal * 0.08)}
+            {formatCurrency(cartTotal * 0.13)}
           </Text>
         </View>
         <View style={[styles.row, styles.totalRow, { borderTopColor: themeColors.neutralContainer }]}>
@@ -102,7 +102,7 @@ export default function CartScreen() {
             Total
           </Text>
           <Text style={[styles.totalValue, { color: themeColors.onNeutral }]}>
-            {formatCurrency(cartTotal * 1.08)}
+            {formatCurrency(cartTotal * 1.13)}
           </Text>
         </View>
         
